@@ -23,6 +23,10 @@ app.config(function($routeProvider) {
     templateUrl : "/examples/statistical.html",
     controller : "StatisticalCtrl"
   })
+  .when("/charts", {
+    templateUrl : "/examples/charts.html",
+    controller : "ChartsCtrl"
+  })
 });
 
 app.run(function($rootScope, $http, $location, $localStorage) {

@@ -1,34 +1,19 @@
-<!--
-
-=========================================================
-* Argon Dashboard - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <style>
-.pagination {
-  display: inline-block;
-}
+    .pagination {
+      display: inline-block;
+    }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-</style>
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+  </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
@@ -42,19 +27,17 @@
   <!-- Icons -->
   <link href="./assets/js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
-  <!-- CSS Files -->
+  <!-- JS and CSS Files -->
   <link href="./assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
   <script src="./assets/js/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
   <script src="assets/js/plugins/jquery/dist/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
-  <link rel="stylesheet" href="  https://printjs-4de6.kxcdn.com/print.min.css  ">
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
-
-  </head>
+  <link rel="stylesheet" href="  https://printjs-4de6.kxcdn.com/print.min.css ">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
 
 <body  ng-app="myApp" >
   <div ng-include="'dashboard.html'"></div>
@@ -148,29 +131,35 @@
         </form>
         <!-- Navigation -->
         <ul class="navbar-nav nav-sidebar-custom ">
-
           <li class="nav-item">
             <a class="nav-link text-white" href="#!">
                 <i class="fas fa-vector-square text-danger " ></i> Đặt bàn
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link text-white" href="#!foods">
                 <i class="fab fa-elementor text-success"></i> Thực Đơn
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link text-white" href="#!resources">
               <i class="ni ni-bullet-list-67 text-red"></i> Nguyên Liệu
             </a>
           </li>
-        
+
           <li class="nav-item">
               <a class="nav-link text-white" href="#!statistical">
                   <i class="fas fa-table text-success"></i>Thống Kê
               </a>
           </li>
 
+          <li class="nav-item">
+              <a class="nav-link text-white" href="#!charts">
+                  <i class="fas fa-table text-success"></i>Biểu đồ thống Kê
+              </a>
+          </li>
         </ul>
         <!-- Divider -->
         <hr class="my-3">
@@ -282,6 +271,56 @@
   <script src="/assets/js/custom.js"></script>
   <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
   <script src="assets/js/index.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', 11],
+        ['Eat', 2],
+        ['Commute', 2],
+        ['Watch TV', 2],
+        ['Sleep', 7]
+      ]);
+
+      var options = {
+        title: 'My Daily Activities',
+        is3D: true
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+  <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+  </script>
 
   <script>document.write('<base href="' + document.location + '" />');</script>
 </body>
