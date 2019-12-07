@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute",'angularUtils.directives.dirPagination',"ngStorage"]);
+var app = angular.module("myApp", ["ngRoute",'angularUtils.directives.dirPagination',"ngStorage", 'googlechart']);
 app.config(function($routeProvider) {
   $routeProvider
   .when("/", {
